@@ -1,0 +1,19 @@
+name: Send Data to Dataverse
+
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Data to Dataverse 
+        uses: atrisovic/dataverse-uploader@master
+        with:
+          DATAVERSE_TOKEN: ${{secrets.DATAVERSE_TOKEN}}
+          DATAVERSE_SERVER: https://dataverse.harvard.edu
+          DATAVERSE_DATASET_DOI: doi:10.7910/DVN/SYNPBS
+          GITHUB_DIR: dataverse/
+          DELETE: True 
+          PUBLISH: True
